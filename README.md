@@ -7,7 +7,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 | Plugin | Description | Version |
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
-| **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with strategist + critic satellites for architecture decisions and risk analysis. | 1.0.0 |
+| **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, native agent teams. | 3.0.0 |
 
 ## Installation
 
@@ -59,11 +59,11 @@ Once installed, use these slash commands:
 |---------|-------------|
 | `/council:setup` | Install dependencies |
 | `/council:init` | Initialize `.council/` in your project |
-| `/council:consult <goal>` | Spawn strategist + critic for adversarial consultation |
-| `/council:status` | View decisions, memory, and stats |
-| `/council:maintain` | Check memory health and compact |
-| `/council:reset` | Clear session data |
-| `/council:export <id>` | Export consultation as markdown |
+| `/council:consult <goal>` | Adversarial consultation (auto-routed: default, debate, plan, reflect) |
+| `/council:status` | View decisions, memory health, compaction recommendations |
+| `/council:maintain` | Compact memory using the curator agent |
+| `/council:update` | Migrate council data after a plugin update |
+| `/council:reset` | Clear session data (add `--all` to also clear memory) |
 
 ## Updating
 
@@ -80,9 +80,9 @@ Once installed, use these slash commands:
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) v1.0.33+
-- Claude Code Max plan (required for The Council's satellite spawning)
+- Agent teams enabled: `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`
 - Python 3.11+
-- [uv](https://docs.astral.sh/uv/) (installed automatically by each plugin's setup)
+- [uv](https://docs.astral.sh/uv/)
 
 ## License
 

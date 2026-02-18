@@ -31,14 +31,14 @@
         "source": "github",
         "repo": "MasterMind-SL/the-council-plugin"
       },
-      "description": "Adversarial consultation with strategist + critic satellites for architecture decisions, risk analysis, and complex implementations. Spawns independent claude -p processes with dedicated context windows.",
-      "version": "1.0.0",
+      "description": "Adversarial consultation with persistent memory for Claude Code agent teams. 4 auto-routed modes (default, debate, plan, reflect), configurable roles, and three-tier budget-aware memory.",
+      "version": "3.0.0",
       "author": {
         "name": "MasterMind-SL"
       },
       "repository": "https://github.com/MasterMind-SL/the-council-plugin",
       "license": "MIT",
-      "keywords": ["council", "consultation", "adversarial", "multi-agent", "strategist", "critic", "architecture"],
+      "keywords": ["council", "consultation", "adversarial", "multi-agent", "strategist", "critic", "architecture", "agent-teams", "memory"],
       "category": "productivity"
     }
   ]
