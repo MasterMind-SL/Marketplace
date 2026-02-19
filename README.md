@@ -73,10 +73,19 @@ All stable commands above, plus:
 
 | Command | Description |
 |---------|-------------|
-| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation with dev teams. Anti-deferral system ensures all requested features are implemented. |
+| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation |
+
+**What's new in v3.1.0-beta:**
+- **Anti-deferral system** — Agents never cut, defer, or deprioritize features. Everything the user asks for gets implemented.
+- **Quality Engineer critic** — Improves quality (security, architecture, error handling) instead of managing scope.
+- **Claude Velocity** — All agents understand Claude Code implements in ~2 hours, not weeks.
+- **Feature completeness gate** — Verifies 100% of requested features are assigned before implementation starts.
+- **Scaled implementation** — 1 team with 3-4 members (each can use subagents for parallelization).
+- **Original prompt tracking** — Memory stores the original prompt for feature-tracking throughout the pipeline.
 
 > **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
 > **Important**: Install either stable OR beta, not both. Uninstall one before installing the other (same MCP server name).
+> **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
 ## Updating
 
