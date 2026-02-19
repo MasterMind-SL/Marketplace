@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, native agent teams. | 3.0.0 |
-| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog) + parallel implementation. | 3.1.0-beta |
+| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog, feature gate) + anti-deferral system. | 3.1.0-beta |
 
 ## Installation
 
@@ -73,7 +73,7 @@ All stable commands above, plus:
 
 | Command | Description |
 |---------|-------------|
-| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + parallel implementation with dev teams |
+| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation with dev teams. Anti-deferral system ensures all requested features are implemented. |
 
 > **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
 > **Important**: Install either stable OR beta, not both. Uninstall one before installing the other (same MCP server name).
