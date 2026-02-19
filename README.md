@@ -76,6 +76,7 @@ All stable commands above, plus:
 | `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + parallel implementation with dev teams |
 
 > **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
+> **Important**: Install either stable OR beta, not both. Uninstall one before installing the other (same MCP server name).
 
 ## Updating
 

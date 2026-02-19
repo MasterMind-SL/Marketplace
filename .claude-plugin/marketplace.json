@@ -48,7 +48,7 @@
         "repo": "MasterMind-SL/the-council-plugin",
         "ref": "QA"
       },
-      "description": "BETA: The Council with /council:build — full build pipeline (PRD, tech deck, backlog) + parallel implementation with dev teams. Includes all v3.0.0 features plus experimental build pipeline.",
+      "description": "BETA: Early access to new features before stable release. Currently includes /council:build — full build pipeline (PRD, tech deck, backlog) + parallel implementation with dev teams. All v3.0.0 features included. Install beta OR stable, not both.",
       "version": "3.1.0-beta",
       "author": {
         "name": "MasterMind-SL"
