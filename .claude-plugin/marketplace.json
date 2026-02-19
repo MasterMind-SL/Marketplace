@@ -40,6 +40,23 @@
       "license": "MIT",
       "keywords": ["council", "consultation", "adversarial", "multi-agent", "strategist", "critic", "architecture", "agent-teams", "memory"],
       "category": "productivity"
+    },
+    {
+      "name": "the-council-beta",
+      "source": {
+        "source": "github",
+        "repo": "MasterMind-SL/the-council-plugin",
+        "ref": "QA"
+      },
+      "description": "BETA: The Council with /council:build — full build pipeline (PRD, tech deck, backlog) + parallel implementation with dev teams. Includes all v3.0.0 features plus experimental build pipeline.",
+      "version": "3.1.0-beta",
+      "author": {
+        "name": "MasterMind-SL"
+      },
+      "repository": "https://github.com/MasterMind-SL/the-council-plugin/tree/QA",
+      "license": "MIT",
+      "keywords": ["council", "consultation", "adversarial", "multi-agent", "strategist", "critic", "architecture", "agent-teams", "memory", "build-pipeline", "prd", "backlog", "beta"],
+      "category": "productivity"
     }
   ]
 }

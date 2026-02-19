@@ -7,7 +7,8 @@ This is the central plugin registry for MasterMind-SL. Each plugin lives in its 
 | Plugin | Repo | Current Version |
 |--------|------|-----------------|
 | upwork-scraper | `MasterMind-SL/Upwork-Plugin-Claude` | 0.2.0 |
-| the-council | `MasterMind-SL/the-council-plugin` | 3.0.0 |
+| the-council | `MasterMind-SL/the-council-plugin` (main) | 3.0.0 |
+| the-council-beta | `MasterMind-SL/the-council-plugin` (QA branch) | 3.1.0-beta |
 
 ## When Publishing a New Plugin Version
 
@@ -15,6 +16,14 @@ This is the central plugin registry for MasterMind-SL. Each plugin lives in its 
 2. Update `.claude-plugin/marketplace.json` here: bump the version and description for the plugin
 3. Update `README.md` here: bump the version in the table and update commands if changed
 4. Commit and push this repo
+
+## When Publishing a Beta Version
+
+1. Push feature branch (e.g., QA) to the plugin repo
+2. Add a new entry to `marketplace.json` with `"ref": "branch-name"` in the source object
+3. Use a versioned name like `plugin-name-beta` to keep it separate from stable
+4. Update README with beta section and commands
+5. When beta is promoted to stable: merge branch to main, update the stable entry version, remove the beta entry
 
 ## When Adding a New Plugin
 

@@ -8,6 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, native agent teams. | 3.0.0 |
+| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog) + parallel implementation. | 3.1.0-beta |
 
 ## Installation
 
@@ -23,7 +24,8 @@ Inside Claude Code:
 
 ```
 /plugin install upwork-scraper@mastermind-marketplace
-/plugin install the-council@mastermind-marketplace
+/plugin install the-council@mastermind-marketplace          # stable
+/plugin install the-council-beta@mastermind-marketplace     # beta (QA branch)
 ```
 
 ### 3. Restart Claude Code
@@ -53,7 +55,7 @@ Once installed, use these slash commands:
 | `/upwork-scraper:analyze <skill>` | Analyze market demand |
 | `/upwork-scraper:portfolio <skills>` | Get portfolio project ideas |
 
-### The Council
+### The Council (stable: v3.0.0)
 
 | Command | Description |
 |---------|-------------|
@@ -64,6 +66,16 @@ Once installed, use these slash commands:
 | `/council:maintain` | Compact memory using the curator agent |
 | `/council:update` | Migrate council data after a plugin update |
 | `/council:reset` | Clear session data (add `--all` to also clear memory) |
+
+### The Council Beta (v3.1.0-beta)
+
+All stable commands above, plus:
+
+| Command | Description |
+|---------|-------------|
+| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + parallel implementation with dev teams |
+
+> **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
 
 ## Updating
 
