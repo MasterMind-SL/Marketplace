@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, native agent teams. | 3.0.0 |
-| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog, feature gate) + anti-deferral system. | 3.1.0-beta |
+| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog, feature gate) + anti-deferral system with unified banned words. | 3.1.0-beta |
 
 ## Installation
 
@@ -80,7 +80,8 @@ All stable commands above, plus:
 - **Quality Engineer critic** — Improves quality (security, architecture, error handling) instead of managing scope.
 - **Claude Velocity** — All agents understand Claude Code implements in ~2 hours, not weeks.
 - **Feature completeness gate** — Verifies 100% of requested features are assigned before implementation starts.
-- **Scaled implementation** — 1 team with 3-4 members (each can use subagents for parallelization).
+- **Scaled implementation** — 1 dev team with 3-4 members (each can use subagents for parallelization).
+- **Unified banned words** — All 5 agents share the same complete banned words list (P0/P1/P2, scope creep, defer, etc.). No more inconsistent enforcement.
 - **Original prompt tracking** — Memory stores the original prompt for feature-tracking throughout the pipeline.
 
 > **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
