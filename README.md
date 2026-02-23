@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
-| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshot, click, type, OCR (auto-detects locale), and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.1.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshots return **native images** Claude can see directly. Click, type, OCR (auto-detects locale), and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.2.0 |
 
 ## Installation
 
@@ -83,14 +83,18 @@ Once installed, use these slash commands:
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
-### Computer Vision (v1.1.0)
+### Computer Vision (v1.2.0)
+
+**What's new in v1.2.0:**
+- **Native image support** — Screenshots now return MCP `ImageContent` blocks that Claude can see directly, instead of base64 text strings. Claude no longer "hallucinates" what's on screen — it actually sees it. Same pattern as Chrome DevTools MCP.
+- **OCR optimization** — Region capture path eliminates wasteful encode-decode round-trips via new `capture_region_raw()` utility.
 
 | Tool | Description |
 |------|-------------|
 | `cv_list_windows` | List all visible windows with HWND, title, process, rect |
-| `cv_screenshot_window` | Capture a specific window by HWND (base64 PNG) |
-| `cv_screenshot_desktop` | Capture the entire desktop (all monitors) |
-| `cv_screenshot_region` | Capture a rectangular region of the screen |
+| `cv_screenshot_window` | Capture a specific window (native image + metadata) |
+| `cv_screenshot_desktop` | Capture the entire desktop (native image + metadata) |
+| `cv_screenshot_region` | Capture a rectangular region (native image + metadata) |
 | `cv_focus_window` | Bring a window to the foreground |
 | `cv_mouse_click` | Click at screen coordinates (left/right/double/middle/drag) |
 | `cv_type_text` | Type text into the foreground window (Unicode) |
