@@ -7,8 +7,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 | Plugin | Description | Version |
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
-| **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, native agent teams. | 3.0.0 |
-| **[the-council-beta](https://github.com/MasterMind-SL/the-council-plugin/tree/QA)** | BETA: All v3.0.0 features + `/council:build` — full build pipeline (PRD, tech deck, backlog, feature gate) + anti-deferral system with unified banned words. | 3.1.0-beta |
+| **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
 
 ## Installation
 
@@ -24,8 +23,7 @@ Inside Claude Code:
 
 ```
 /plugin install upwork-scraper@mastermind-marketplace
-/plugin install the-council@mastermind-marketplace          # stable
-/plugin install the-council-beta@mastermind-marketplace     # beta (QA branch)
+/plugin install the-council@mastermind-marketplace
 ```
 
 ### 3. Restart Claude Code
@@ -55,37 +53,31 @@ Once installed, use these slash commands:
 | `/upwork-scraper:analyze <skill>` | Analyze market demand |
 | `/upwork-scraper:portfolio <skills>` | Get portfolio project ideas |
 
-### The Council (stable: v3.0.0)
+### The Council (v3.1.0)
 
 | Command | Description |
 |---------|-------------|
 | `/council:setup` | Install dependencies |
 | `/council:init` | Initialize `.council/` in your project |
 | `/council:consult <goal>` | Adversarial consultation (auto-routed: default, debate, plan, reflect) |
+| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation |
 | `/council:status` | View decisions, memory health, compaction recommendations |
 | `/council:maintain` | Compact memory using the curator agent |
 | `/council:update` | Migrate council data after a plugin update |
 | `/council:reset` | Clear session data (add `--all` to also clear memory) |
 
-### The Council Beta (v3.1.0-beta)
-
-All stable commands above, plus:
-
-| Command | Description |
-|---------|-------------|
-| `/council:build <goal>` | Full build pipeline: 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation |
-
-**What's new in v3.1.0-beta:**
+**What's new in v3.1.0:**
+- **`/council:build` pipeline** — 3 consultations (PRD, tech deck, backlog) + feature completeness gate + implementation with 1 dev team (3-4 members, each with subagent parallelization).
 - **Anti-deferral system** — Agents never cut, defer, or deprioritize features. Everything the user asks for gets implemented.
 - **Quality Engineer critic** — Improves quality (security, architecture, error handling) instead of managing scope.
 - **Claude Velocity** — All agents understand Claude Code implements in ~2 hours, not weeks.
-- **Feature completeness gate** — Verifies 100% of requested features are assigned before implementation starts.
-- **Scaled implementation** — 1 dev team with 3-4 members (each can use subagents for parallelization).
-- **Unified banned words** — All 5 agents share the same complete banned words list (P0/P1/P2, scope creep, defer, etc.). No more inconsistent enforcement.
-- **Original prompt tracking** — Memory stores the original prompt for feature-tracking throughout the pipeline.
+- **Unified banned words** — All 5 agents share the same complete banned words list (P0/P1/P2, scope creep, defer, etc.).
+- **Synonym expansion** — Topic matching works across 50+ synonym pairs (e.g. "autoscaling" → "performance", "postgres" → "database") plus bigrams.
+- **Staleness markers** — Memory entries older than 90 days show `[stale: Xd]` and score 0.7× in relevance. Pinned entries always exempt.
+- **3-tier memory packing** — Detail adapts to token budget: full text when generous, smart upgrade pass when normal, one-liners when tight.
+- **Archive top-12 by relevance** — Archive excerpts select the most relevant lessons (was last-5 by recency).
+- **MEMORY LENS directives** — Each teammate receives a role-specific lens before the injected memory block.
 
-> **Note**: Beta installs from the QA branch. Expect changes. Token-intensive (~50k-150k+ tokens per build).
-> **Important**: Install either stable OR beta, not both. Uninstall one before installing the other (same MCP server name).
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
 ## Updating
