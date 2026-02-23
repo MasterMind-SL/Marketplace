@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
-| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshot, click, type, OCR, and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.0.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshot, click, type, OCR (auto-detects locale), and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.1.0 |
 
 ## Installation
 
@@ -83,7 +83,7 @@ Once installed, use these slash commands:
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
-### Computer Vision (v1.0.0)
+### Computer Vision (v1.1.0)
 
 | Tool | Description |
 |------|-------------|
