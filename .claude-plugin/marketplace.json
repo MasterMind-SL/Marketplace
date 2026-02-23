@@ -40,6 +40,22 @@
       "license": "MIT",
       "keywords": ["council", "consultation", "adversarial", "multi-agent", "strategist", "critic", "architecture", "agent-teams", "memory", "build-pipeline", "prd", "backlog"],
       "category": "productivity"
+    },
+    {
+      "name": "computer-vision",
+      "source": {
+        "source": "github",
+        "repo": "MasterMind-SL/computer-vision-plugin"
+      },
+      "description": "Desktop computer vision and input control for Claude Code on Windows. Capture screenshots, enumerate windows, click, type, OCR, and read UI accessibility trees across any Windows application. Like Claude-in-Chrome, but for any app.",
+      "version": "1.0.0",
+      "author": {
+        "name": "MasterMind-SL"
+      },
+      "repository": "https://github.com/MasterMind-SL/computer-vision-plugin",
+      "license": "MIT",
+      "keywords": ["computer-vision", "windows", "desktop", "automation", "mcp", "screenshot", "ocr", "accessibility", "ui-automation"],
+      "category": "utilities"
     }
   ]
 }

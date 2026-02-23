@@ -8,6 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshot, click, type, OCR, and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.0.0 |
 
 ## Installation
 
@@ -24,6 +25,7 @@ Inside Claude Code:
 ```
 /plugin install upwork-scraper@mastermind-marketplace
 /plugin install the-council@mastermind-marketplace
+/plugin install computer-vision@mastermind-marketplace
 ```
 
 ### 3. Restart Claude Code
@@ -37,6 +39,7 @@ Each plugin has a setup command:
 ```
 /upwork-scraper:setup
 /council:setup
+/cv-setup
 ```
 
 ## Commands
@@ -79,6 +82,32 @@ Once installed, use these slash commands:
 - **MEMORY LENS directives** — Each teammate receives a role-specific lens before the injected memory block.
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
+
+### Computer Vision (v1.0.0)
+
+| Tool | Description |
+|------|-------------|
+| `cv_list_windows` | List all visible windows with HWND, title, process, rect |
+| `cv_screenshot_window` | Capture a specific window by HWND (base64 PNG) |
+| `cv_screenshot_desktop` | Capture the entire desktop (all monitors) |
+| `cv_screenshot_region` | Capture a rectangular region of the screen |
+| `cv_focus_window` | Bring a window to the foreground |
+| `cv_mouse_click` | Click at screen coordinates (left/right/double/middle/drag) |
+| `cv_type_text` | Type text into the foreground window (Unicode) |
+| `cv_send_keys` | Send key combinations (Ctrl+S, Alt+Tab, etc.) |
+| `cv_move_window` | Move/resize a window or maximize/minimize/restore |
+| `cv_ocr` | Extract text from a window or region with bounding boxes |
+| `cv_list_monitors` | List all monitors with resolution, DPI, and position |
+| `cv_read_ui` | Read the UI accessibility tree of a window |
+| `cv_wait_for_window` | Wait for a window matching a title pattern to appear |
+| `cv_wait` | Simple delay (max 30 seconds) |
+
+| Command | Description |
+|---------|-------------|
+| `/cv-setup` | Verify setup and dependencies |
+| `/cv-help` | Usage guide and examples |
+
+> **Requirements:** Windows 10 21H2+ or Windows 11, Python 3.11+, [uv](https://docs.astral.sh/uv/)
 
 ## Updating
 
