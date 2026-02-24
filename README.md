@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
-| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. 16 tools: screenshots, click, type, OCR with bounding boxes, natural language element finder (`cv_find`), text extraction (`cv_get_text`), UI trees. Like Claude-in-Chrome, but for any app. | 1.4.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. 16 tools: screenshots, click, type, OCR with bounding boxes, natural language element finder (`cv_find`), text extraction (`cv_get_text`), UI trees. Like Claude-in-Chrome, but for any app. | 1.5.0 |
 
 ## Installation
 
@@ -83,15 +83,16 @@ Once installed, use these slash commands:
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
-### Computer Vision (v1.4.0)
+### Computer Vision (v1.5.0)
 
-**What's new in v1.4.0:**
-- **`cv_find`** — Natural language element finder. Say `cv_find("Submit button", hwnd)` and get screen-absolute coordinates. Uses UIA fuzzy matching first, OCR fallback for Chrome/Electron apps. One tool call replaces the 4-step screenshot→OCR→parse→click workflow.
-- **`cv_get_text`** — Clean text extraction from any window. UIA primary path (99%+ accuracy for native apps), OCR fallback for web apps. Spatial sorting preserves reading order.
-- **OCR bounding boxes fixed** — Every detected word and line now has accurate bounding boxes (was always empty before). Word-level detail with confidence scores.
-- **OCR accuracy improved** — Language detection prefers `en-US` regardless of system locale. Image preprocessing (upscale, grayscale, sharpen, contrast) enabled by default.
-- **Security hardened** — `cv_ocr` now has security gates (was missing). Default PII redaction patterns (SSN, credit card). Password field detection via UIA `IsPassword` property.
+**What's new in v1.5.0:**
+- **Robust window focus** — 4-strategy escalation (direct, ALT key trick, AttachThreadInput, SPI bypass) with 6 retries and verified foreground ownership. Works reliably from background processes.
+- **Correct occluded window capture** — PrintWindow with `PW_RENDERFULLCONTENT` as primary capture method. Screenshots show the actual window content even when behind other windows.
+- **Chrome/Electron accessibility** — Automatically activates Chrome's UIA tree by sending `WM_GETOBJECT` to renderer child windows. `cv_find` and `cv_read_ui` now work on Chrome, Edge, VS Code, Slack, Discord, and all Chromium apps.
+- **Vision fallback** — When `cv_find` returns no matches, it includes a screenshot (`image_path`) so Claude can visually inspect the window and retry with better queries or coordinates.
+- **GDI handle leak fixed** — `_capture_with_printwindow()` now properly cleans up all DC handles in finally blocks.
 
+**v1.4.0:** `cv_find`, `cv_get_text`, OCR bounding boxes, security hardening.
 **v1.3.0:** File-based screenshots, auto-cleanup.
 **v1.2.0:** OCR optimization via `capture_region_raw()`.
 
