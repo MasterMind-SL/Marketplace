@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
-| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. 16 tools: screenshots, click, type, OCR with bounding boxes, natural language element finder (`cv_find`), text extraction (`cv_get_text`), UI trees. Like Claude-in-Chrome, but for any app. | 1.5.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. 17 tools: screenshots, click, type, scroll, OCR, natural language element finder (`cv_find`), text extraction (`cv_get_text`), UI trees. Atomic keyboard with hwnd, post-action screenshots, vision-enhanced find. Like Claude-in-Chrome, but for any app. | 1.6.0 |
 
 ## Installation
 
@@ -83,15 +83,16 @@ Once installed, use these slash commands:
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
-### Computer Vision (v1.5.0)
+### Computer Vision (v1.6.0)
 
-**What's new in v1.5.0:**
-- **Robust window focus** — 4-strategy escalation (direct, ALT key trick, AttachThreadInput, SPI bypass) with 6 retries and verified foreground ownership. Works reliably from background processes.
-- **Correct occluded window capture** — PrintWindow with `PW_RENDERFULLCONTENT` as primary capture method. Screenshots show the actual window content even when behind other windows.
-- **Chrome/Electron accessibility** — Automatically activates Chrome's UIA tree by sending `WM_GETOBJECT` to renderer child windows. `cv_find` and `cv_read_ui` now work on Chrome, Edge, VS Code, Slack, Discord, and all Chromium apps.
-- **Vision fallback** — When `cv_find` returns no matches, it includes a screenshot (`image_path`) so Claude can visually inspect the window and retry with better queries or coordinates.
-- **GDI handle leak fixed** — `_capture_with_printwindow()` now properly cleans up all DC handles in finally blocks.
+**What's new in v1.6.0:**
+- **Atomic keyboard with hwnd** — `cv_type_text` and `cv_send_keys` accept optional `hwnd` parameter for atomic focus+type+verify in a single tool call. 3-retry loop with TOCTOU mitigation. Type into Chrome's address bar without losing focus to the terminal.
+- **Post-action screenshots** — Every mutating tool (`cv_type_text`, `cv_send_keys`, `cv_mouse_click`, `cv_scroll`) returns `image_path` with a screenshot taken after the action. Enables see-act-verify loop. Opt-out with `screenshot=False`.
+- **cv_scroll** — New dedicated scroll tool. Scroll any window in any direction (up/down/left/right) with configurable amount. Supports window-relative coordinates for targeted scrolling.
+- **Vision-enhanced cv_find** — Success responses always include a screenshot with `image_scale` and `window_origin` metadata, enabling Claude to visually verify matches and compute click coordinates from the downscaled image.
+- **Window state metadata** — Every tool with `hwnd` returns `window_state` (title, is_foreground, rect) for state awareness between tool calls.
 
+**v1.5.0:** Robust 4-strategy window focus, PrintWindow-first capture, Chrome/Electron accessibility, vision fallback on no-match, GDI leak fix.
 **v1.4.0:** `cv_find`, `cv_get_text`, OCR bounding boxes, security hardening.
 **v1.3.0:** File-based screenshots, auto-cleanup.
 **v1.2.0:** OCR optimization via `capture_region_raw()`.
@@ -103,9 +104,10 @@ Once installed, use these slash commands:
 | `cv_screenshot_desktop` | Capture the desktop — returns `image_path` for native viewing |
 | `cv_screenshot_region` | Capture a region — returns `image_path` for native viewing |
 | `cv_focus_window` | Bring a window to the foreground |
-| `cv_mouse_click` | Click at screen coordinates (left/right/double/middle/drag) |
-| `cv_type_text` | Type text into the foreground window (Unicode) |
-| `cv_send_keys` | Send key combinations (Ctrl+S, Alt+Tab, etc.) |
+| `cv_mouse_click` | Click at screen coordinates (left/right/double/middle/drag) — returns screenshot |
+| `cv_type_text` | Type text with optional `hwnd` for atomic focus+type — returns screenshot |
+| `cv_send_keys` | Send key combinations with optional `hwnd` for atomic focus+send — returns screenshot |
+| `cv_scroll` | Scroll a window (up/down/left/right) with configurable amount — returns screenshot |
 | `cv_move_window` | Move/resize a window or maximize/minimize/restore |
 | `cv_ocr` | Extract text with word-level bounding boxes and confidence |
 | `cv_find` | Find elements by natural language (UIA + OCR fuzzy search) |
