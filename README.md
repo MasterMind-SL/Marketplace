@@ -8,7 +8,7 @@ Claude Code plugin marketplace by MasterMind-SL.
 |--------|-------------|---------|
 | **[upwork-scraper](https://github.com/MasterMind-SL/Upwork-Plugin-Claude)** | Scrape Upwork jobs, analyze market demand, write proposals, optimize rates, and build portfolios. 5 slash commands + 5 AI agents. | 0.2.0 |
 | **[the-council](https://github.com/MasterMind-SL/the-council-plugin)** | Adversarial consultation with persistent memory. 4 auto-routed modes, configurable roles, `/council:build` pipeline, anti-deferral system, intelligent memory retrieval. | 3.1.0 |
-| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. Screenshots save to temp files for native viewing via Read tool. Click, type, OCR (auto-detects locale), and read UI trees across any application. Like Claude-in-Chrome, but for any app. | 1.3.0 |
+| **[computer-vision](https://github.com/MasterMind-SL/computer-vision-plugin)** | Desktop computer vision and input control for Windows. 16 tools: screenshots, click, type, OCR with bounding boxes, natural language element finder (`cv_find`), text extraction (`cv_get_text`), UI trees. Like Claude-in-Chrome, but for any app. | 1.4.0 |
 
 ## Installation
 
@@ -83,12 +83,16 @@ Once installed, use these slash commands:
 
 > **After updating**: Run `/council:update` in each project with `.council/` to migrate data.
 
-### Computer Vision (v1.3.0)
+### Computer Vision (v1.4.0)
 
-**What's new in v1.3.0:**
-- **File-based screenshots** — Screenshots save to temp files and return `image_path`. Claude uses the Read tool to view images natively as a multimodal LLM. No more base64 overhead or context window limits.
-- **Auto-cleanup** — Temp screenshot files are automatically removed after 5 minutes.
+**What's new in v1.4.0:**
+- **`cv_find`** — Natural language element finder. Say `cv_find("Submit button", hwnd)` and get screen-absolute coordinates. Uses UIA fuzzy matching first, OCR fallback for Chrome/Electron apps. One tool call replaces the 4-step screenshot→OCR→parse→click workflow.
+- **`cv_get_text`** — Clean text extraction from any window. UIA primary path (99%+ accuracy for native apps), OCR fallback for web apps. Spatial sorting preserves reading order.
+- **OCR bounding boxes fixed** — Every detected word and line now has accurate bounding boxes (was always empty before). Word-level detail with confidence scores.
+- **OCR accuracy improved** — Language detection prefers `en-US` regardless of system locale. Image preprocessing (upscale, grayscale, sharpen, contrast) enabled by default.
+- **Security hardened** — `cv_ocr` now has security gates (was missing). Default PII redaction patterns (SSN, credit card). Password field detection via UIA `IsPassword` property.
 
+**v1.3.0:** File-based screenshots, auto-cleanup.
 **v1.2.0:** OCR optimization via `capture_region_raw()`.
 
 | Tool | Description |
@@ -102,7 +106,9 @@ Once installed, use these slash commands:
 | `cv_type_text` | Type text into the foreground window (Unicode) |
 | `cv_send_keys` | Send key combinations (Ctrl+S, Alt+Tab, etc.) |
 | `cv_move_window` | Move/resize a window or maximize/minimize/restore |
-| `cv_ocr` | Extract text from a window or region with bounding boxes |
+| `cv_ocr` | Extract text with word-level bounding boxes and confidence |
+| `cv_find` | Find elements by natural language (UIA + OCR fuzzy search) |
+| `cv_get_text` | Extract all visible text (UIA primary, OCR fallback) |
 | `cv_list_monitors` | List all monitors with resolution, DPI, and position |
 | `cv_read_ui` | Read the UI accessibility tree of a window |
 | `cv_wait_for_window` | Wait for a window matching a title pattern to appear |
