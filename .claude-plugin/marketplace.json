@@ -47,8 +47,8 @@
         "source": "github",
         "repo": "MasterMind-SL/computer-vision-plugin"
       },
-      "description": "Desktop computer vision and input control for Claude Code on Windows. Capture screenshots, enumerate windows, click, type, OCR (auto-detects locale), and read UI accessibility trees across any Windows application. Like Claude-in-Chrome, but for any app.",
-      "version": "1.1.0",
+      "description": "Desktop computer vision and input control for Claude Code on Windows. Screenshots return native images Claude can see directly. Capture windows, enumerate windows, click, type, OCR (auto-detects locale), and read UI accessibility trees across any Windows application.",
+      "version": "1.2.0",
       "author": {
         "name": "MasterMind-SL"
       },

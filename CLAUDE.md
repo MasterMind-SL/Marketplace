@@ -8,7 +8,7 @@ This is the central plugin registry for MasterMind-SL. Each plugin lives in its 
 |--------|------|-----------------|
 | upwork-scraper | `MasterMind-SL/Upwork-Plugin-Claude` | 0.2.0 |
 | the-council | `MasterMind-SL/the-council-plugin` (main) | 3.1.0 |
-| computer-vision | `MasterMind-SL/computer-vision-plugin` | 1.1.0 |
+| computer-vision | `MasterMind-SL/computer-vision-plugin` | 1.2.0 |
 
 ## When Publishing a New Plugin Version
 
